@@ -47,8 +47,5 @@ class WorkdirDetail(TemplateView):
             else:
                 files.append(res)
 
-        context = {**context,
-                   'dirs': zip(dirs, [i.split("\\")[-1] for i in dirs]),
-                   'files': [i.split("\\")[-1] for i in files],
-                   'name': name_file.split("\\")[-1]}
+        context = {**context, 'dirs': dirs, 'files': files, 'name': name_file}
         return context

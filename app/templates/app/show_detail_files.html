@@ -1,13 +1,14 @@
 {% extends "base.html" %}
+{% load app_tags %}
 
 {% block title %}Детальная информация о директории{% endblock %}
 
 {% block content %}
-    <h1>Структура директории {{ name }}</h1>
+    <h1>Структура директории {{ name|last_part }}</h1>
     <h3>Текущие директории:</h3>
     <ol>
-        {% for dir, part in dirs %}
-            <li><a href="{% url 'workdir_detail' dir %}">{{ part }}</a></li>
+        {% for dir in dirs %}
+            <li><a href="{% url 'workdir_detail' dir %}">{{ dir|last_part }}</a></li>
         {% empty %}
             Директории отсутствуют
         {% endfor %}
@@ -15,7 +16,7 @@
     <h3>Текущие файлы</h3>
     <ol>
         {% for file in files %}
-            <li>{{file}}</li>
+            <li>{{file|last_part}}</li>
         {% empty %}
             Файлы отсутствуют
         {% endfor %}
