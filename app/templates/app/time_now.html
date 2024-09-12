@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+
+{% block title %}Текущее время{% endblock %}
+
+{% block content %}
+    Текущее время: {{ time_now }}<br>
+    <a href="{% url 'home' %}">Главное меню</a>
+{% endblock %}

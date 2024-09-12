@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}Детальная информация о директории{% endblock %}
+
+{% block content %}
+    <h1>Структура директории {{ name }}</h1>
+    <h3>Текущие директории:</h3>
+    <ol>
+        {% for dir, part in dirs %}
+            <li><a href="{% url 'workdir_detail' dir %}">{{ part }}</a></li>
+        {% empty %}
+            Директории отсутствуют
+        {% endfor %}
+    </ol>
+    <h3>Текущие файлы</h3>
+    <ol>
+        {% for file in files %}
+            <li>{{file}}</li>
+        {% empty %}
+            Файлы отсутствуют
+        {% endfor %}
+    </ol><br>
+    <a href="{% url 'home' %}">Главное меню</a>
+{% endblock %}

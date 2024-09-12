@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}Файлы проекта{% endblock %}
+
+{% block content %}
+    <h1>Структура проекта</h1>
+    <h3>Текущие директории проекта:</h3>
+    <ol>
+        {% for dir in dirs %}
+            <li><a href="{% url 'workdir_detail' dir %}">{{dir}}</a></li>
+        {% empty %}
+            Директории отсутствуют
+        {% endfor %}
+    </ol>
+    <h3>Текущие файлы проекта</h3>
+    <ol>
+        {% for file in files %}
+            <li>{{file}}</li>
+        {% empty %}
+            Файлы отсутствуют
+        {% endfor %}
+    </ol><br>
+    <a href="{% url 'home' %}">Главное меню</a>
+
+{% endblock %}

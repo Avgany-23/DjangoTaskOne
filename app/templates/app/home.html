@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Домашняя страница{% endblock %}
+{% block content %}
+    <h1>Выберите раздел</h1>
+    <ol>
+        {% for title, url in pages.items %}
+            <li>
+                <a href="{{ url }}">{{ title }}</a>
+            </li>
+        {% empty %}
+            Список пуст
+        {% endfor %}
+    </ol>
+{% endblock %}
